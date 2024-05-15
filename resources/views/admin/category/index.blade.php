@@ -7,10 +7,12 @@
             <div class="card custom-card">
                 <div class="card-header border-bottom justify-content-between">
                     <h3 class="card-title">Simple Table</h3>
-                    <a href="{{route('categories.create')}}" class="card-title">Add New</a>
+                    <a href="{{route('categories.create')}}" class="card-title btn-primary-gradient btn-sm p-2">Add New</a>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted">Using the most basic table markup.</p>
+                    <p class=" text-center text-success " role="alert">
+                        {{session('message')}}
+                    </p>
                     <div class="table-responsive">
                         <table class="table  border text-nowrap text-md-nowrap">
                             <thead>
@@ -31,14 +33,24 @@
                                     <td>{{$sl++}}</td>
                                     <td>{{$category->name}}</td>
                                     <td>
-                                        <img src="{{ asset($category->image )}}" alt="{{$category->name}}">
+                                        <img src="{{ asset($category->image)}}" alt="{{$category->name}}" style="height: 50px; width: 50px;">
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        {{$category->status ? 'Active' : 'Inactive'}}
+                                    </td>
                                     <td class="d-flex justify-content-center">
-                                        <a href="" class="btn btn-primary me-2">Edit</a>
-                                        <form action="" method="POSt">
+
+                                        <a href="{{route('categories.edit',$category->id)}}" class="btn btn-primary me-2">Edit</a>
+
+                                      @if($category->status==1)
+                                            <a href="{{route('categories.show', $category->id)}}" class="btn btn-info me-2">Active</a>
+                                        @else
+                                            <a href="{{route('categories.show', $category->id)}}" class="btn btn-warning me-2">Inactive</a>
+                                        @endif
+                                            <form action="{{route('categories.destroy',$category->id)}}" method="POST">
+                                            @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete..')">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

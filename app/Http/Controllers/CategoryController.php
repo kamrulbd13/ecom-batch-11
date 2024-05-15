@@ -26,6 +26,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+
         return view('admin.category.create');
     }
 
@@ -35,7 +36,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::saveCategory($request);
-        return redirect(route('categories.index'));
+        return redirect()->back()->with('message','Category Info Create Successfully. ');
 
     }
 
@@ -44,23 +45,31 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        Category::statusUpdate($id);
+        return redirect()->back()->with('message','Status Change Successfully. ');
 
+    }
+    public function status($id){
+            return view('');
+    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.category.edit', [
+            'category' =>Category::find($id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, String $id)
     {
-        //
+
+        Category::updateCategory($request, $id);
+        return redirect()->route('categories.index')->with('message', 'Update Successfully.');
     }
 
     /**
@@ -68,6 +77,7 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       Category::deleteCategory($id);
+        return redirect()->back()->with('message','Delete Successfully.');
     }
 }

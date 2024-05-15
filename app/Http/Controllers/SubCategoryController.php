@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
@@ -11,7 +13,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.subCategory.index',[
+            'subCategories' =>SubCategory::all()
+        ]);
     }
 
     /**
@@ -20,6 +24,9 @@ class SubCategoryController extends Controller
     public function create()
     {
         //
+        return view('admin.subCategory.create',[
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -28,6 +35,8 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         //
+        SubCategory::saveSubCategory($request);
+        return redirect()->route('subCategories.index');
     }
 
     /**
@@ -35,7 +44,9 @@ class SubCategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        SubCategory::statusUpdate($id);
+        return redirect()->route('subCategories.index');
+
     }
 
     /**
@@ -43,7 +54,10 @@ class SubCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.subCategory.edit',[
+            'subCategory' =>SubCategory::find($id),
+            'categories' =>Category::all()
+        ]);
     }
 
     /**
@@ -51,7 +65,8 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        SubCategory::updateSubCategory($request, $id);
+        return redirect()->route('subCategories.index')->with('message','');
     }
 
     /**
@@ -59,6 +74,7 @@ class SubCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       SubCategory::deleteSubCategory($id);
+       return redirect()->back()->with('message','Recorded Deleted');
     }
 }

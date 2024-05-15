@@ -6,7 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -41,8 +42,20 @@ Route::middleware([
 
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
-//category
-    Route::resources(['categories'=>CategoryController::class]);
-//Sub-Category
-    Route::resources(['Sub-Categories'=>SubCategoryController::class]);
+//Setting
+
+    Route::resources([
+        'categories'    =>CategoryController::class,
+        'subCategories' =>SubCategoryController::class,
+        'brand'         =>BrandController::class,
+    ]);
+
+//    product module
+    Route::get('/product',[ProductController::class,'index'])->name('product.index');
+    Route::get('/product/create',[ProductController::class,'create'])->name('product.create');
+    Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
+    Route::get('/product/details/{id}',[ProductController::class,'details'])->name('product.details');
+    Route::get('/product/status/{id}',[ProductController::class,'status'])->name('product.status');
+    Route::get('/product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
+    Route::get('/product/destroy/{id}',[ProductController::class,'destroy'])->name('product.destroy');
 });

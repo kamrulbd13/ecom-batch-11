@@ -29,7 +29,7 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="{{asset('/')}}website/assets/images/product-details/01.jpg" id="current" alt="#">
+                                    <img src="{{asset($product->image)}}" id="current" alt="#">
                                 </div>
                                 <div class="images">
                                     <img src="{{asset('/')}}website/assets/images/product-details/01.jpg" class="img" alt="#">
@@ -43,13 +43,13 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title">GoPro Karma Camera Drone</h2>
+                            <h2 class="title">{{$product->name}}</h2>
                             <p class="category"><i class="lni lni-tag"></i> Drones:<a href="javascript:void(0)">Action
                                     cameras</a></p>
-                            <h3 class="price">$850<span>$945</span></h3>
-                            <p class="info-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
+                            <h3 class="price">	&#2547; {{$product->price}}<span class="text-danger">	&#2547; 945</span></h3>
+                            <p class="info-text">
+                                {{substr($product->description, 0, 50)}} ...
+                            </p>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="form-group color-option">
@@ -124,10 +124,9 @@
                         <div class="col-lg-6 col-12">
                             <div class="info-body custom-responsive-margin">
                                 <h4>Details</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+                                <p>
+                                    {{$product->description}}
+                                </p>
                                 <h4>Features</h4>
                                 <ul class="features">
                                     <li>Capture 4K30 Video and 12MP Photos</li>

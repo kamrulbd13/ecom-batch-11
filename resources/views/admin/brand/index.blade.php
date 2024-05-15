@@ -6,8 +6,8 @@
         <div class="col-lg-12">
             <div class="card custom-card">
                 <div class="card-header border-bottom justify-content-between">
-                    <h3 class="card-title">Sub Category Info</h3>
-                    <a href="{{route('subCategories.create')}}" class="card-title btn btn-primary-gradient">Add New</a>
+                    <h3 class="card-title">Simple Table</h3>
+                    <a href="{{route('brand.create')}}" class="card-title btn btn-primary-gradient btn-sm">Add New</a>
                 </div>
                 <div class="card-body">
                     <p class="text-muted">Using the most basic table markup.</p>
@@ -16,7 +16,6 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Category</th>
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Status</th>
@@ -27,36 +26,31 @@
                             @php
                                 $sl=1;
                             @endphp
-                            @foreach($subCategories as $subCategory)
+                            @foreach($brands as $brand)
                                 <tr>
                                     <td>{{$sl++}}</td>
-                                    <td>{{$subCategory->category->name}}</td>
-                                    <td>{{$subCategory->name}}</td>
+                                    <td>{{$brand->name}}</td>
                                     <td>
-                                        <img src="{{ asset($subCategory->image_path )}}" alt="{{$subCategory->name}}" height="50px" width="50px" class="rounded-2">
+                                        <img src="{{ asset($brand->image )}}" alt="{{$brand->name}}" width="50px" height="50px" class="rounded-2">
                                     </td>
                                     <td>
-                                        {{$subCategory->status ? 'Active' : 'Inactive' }}
+                                        {{$brand->status==1 ? 'Active' : 'Inactive'}}
                                     </td>
                                     <td class="d-flex justify-content-center">
+                                        <a href="" class="btn btn-info me-2">View</a>
+                                        <a href="{{route('brand.edit',$brand->id)}}" class="btn btn-primary me-2">Edit</a>
 
-                                        <a href="{{route('subCategories.edit', $subCategory->id)}}" class="btn btn-primary me-2">Edit</a>
+                                      @if($brand->status==1)
 
-
-
-
-
-                                        @if($subCategory->status==1)
-                                            <a href="{{route('subCategories.show', $subCategory->id)}}" class="btn btn-warning me-2">Inactive</a>
+                                            <a href="{{route('brand.show',$brand->id)}}" class="btn btn-warning me-2">Inactive</a>
                                         @else
-                                            <a href="{{route('subCategories.show', $subCategory->id)}}" class="btn btn-info me-2">Active</a>
+                                            <a href="{{route('brand.show',$brand->id)}}" class="btn btn-success me-2">Active</a>
 
-                                        @endif
-
-                                        <form action="{{route('subCategories.destroy',$subCategory->id)}}" method="POSt">
+                                          @endif
+                                        <form action="{{route('brand.destroy', $brand->id)}}" method="POSt">
                                             @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure!')">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -25,7 +25,9 @@
     <!-- STYLE CSS -->
     <link href="{{asset('/')}}admin/assets/css/style.css" rel="stylesheet" />
     <link href="{{asset('/')}}admin/assets/css/skin-modes.css" rel="stylesheet" />
-
+{{--    app css--}}
+    <link href="{{asset('/')}}admin/assets/css/app.css" rel="stylesheet" />
+{{--    app css--}}
 
 
     <!--- FONT-ICONS CSS -->
@@ -535,6 +537,10 @@
 <!-- JQUERY JS -->
 <script src="{{asset('/')}}admin/assets/plugins/jquery/jquery.min.js"></script>
 
+{{--ajax--}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{{--ajax--}}
+
 <!-- BOOTSTRAP JS -->
 <script src="{{asset('/')}}admin/assets/plugins/bootstrap/js/popper.min.js"></script>
 <script src="{{asset('/')}}admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -581,6 +587,13 @@
 <!-- SWITCHER JS -->
 <script src="{{asset('/')}}admin/assets/switcher/js/switcher.js"></script>
 
+<!-- Sweet-alert js  -->
+<script src="{{asset('/')}}admin/assets/plugins/sweet-alert/sweetalert.min.js"></script>
+<script src="{{asset('/')}}admin/assets/plugins/sweet-alert/jquery.sweet-alert.js"></script>
+
+{{--app Js--}}
+<script src="{{asset('/')}}admin/assets/js/app.js"></script>
+{{--app Js--}}
 </body>
 
 
