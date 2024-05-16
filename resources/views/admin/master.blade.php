@@ -606,6 +606,12 @@
 <script src="{{asset('/')}}admin/assets/plugins/fancyuploder/jquery.fancy-fileupload.js"></script>
 <script src="{{asset('/')}}admin/assets/plugins/fancyuploder/fancy-uploader.js"></script>
 
+{{--for image --}}
+<script src="{{asset('/')}}admin/assets/js/bootstrap.min.js"></script>
+<script src="{{asset('/')}}admin/assets/js/tiny-slider.js"></script>
+<script src="{{asset('/')}}admin/assets/js/glightbox.min.js"></script>
+<script src="{{asset('/')}}admin/assets/js/main.js"></script>
+{{--for image --}}
 {{--app Js--}}
 <script src="{{asset('/')}}admin/assets/js/app.js"></script>
 {{--app Js--}}
