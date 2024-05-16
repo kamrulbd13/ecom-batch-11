@@ -591,6 +591,21 @@
 <script src="{{asset('/')}}admin/assets/plugins/sweet-alert/sweetalert.min.js"></script>
 <script src="{{asset('/')}}admin/assets/plugins/sweet-alert/jquery.sweet-alert.js"></script>
 
+
+<!-- FORM ELEMENTS JS -->
+<script src="{{asset('/')}}admin/assets/js/formelementadvnced.js"></script>
+
+<!--Internal Fileuploads js-->
+<script src="{{asset('/')}}admin/assets/plugins/fileuploads/js/fileupload.js"></script>
+<script src="{{asset('/')}}admin/assets/plugins/fileuploads/js/file-upload.js"></script>
+
+<!--Internal Fancy uploader js-->
+<script src="{{asset('/')}}admin/assets/plugins/fancyuploder/jquery.ui.widget.js"></script>
+<script src="{{asset('/')}}admin/assets/plugins/fancyuploder/jquery.fileupload.js"></script>
+<script src="{{asset('/')}}admin/assets/plugins/fancyuploder/jquery.iframe-transport.js"></script>
+<script src="{{asset('/')}}admin/assets/plugins/fancyuploder/jquery.fancy-fileupload.js"></script>
+<script src="{{asset('/')}}admin/assets/plugins/fancyuploder/fancy-uploader.js"></script>
+
 {{--app Js--}}
 <script src="{{asset('/')}}admin/assets/js/app.js"></script>
 {{--app Js--}}

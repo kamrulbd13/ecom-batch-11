@@ -78,8 +78,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="file" class="form-control" name="image" placeholder="Image" >
+                                    <div class="col-sm-12 col-md-4">
+                                        <input type="file" class="dropify form-control" name="image" data-height="180" />
+                                    </div>
+
                                 </div>
+                            <div class="form-group">
+                                <input class="form-control" type="file" name="other_image[]" accept=" image/jpeg, image/png, " multiple />
+                            </div>
                                 <div class="text-center">
                                     <a href="{{route('product.index')}}" class="btn btn-danger">Cancel</a>
                                     <button type="submit" class="btn btn-primary">Save</button>

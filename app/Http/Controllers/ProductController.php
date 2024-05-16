@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductOtherImage;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    public  $productId;
     /**
      * Display a listing of the resource.
      */
@@ -37,7 +40,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::saveProduct($request);
+      $this->productId          =  Product::saveProduct($request);
+      ProductOtherImage::saveProductOtherImage($request->file('other_image'), $this->productId);
         return redirect()->back()->with('message','Product has been added');
     }
 
@@ -47,7 +51,10 @@ class ProductController extends Controller
     public function details(string $id)
     {
         return view('website.product.details',[
-            'product' =>Product::where('status', 1)->first(),
+            'product'           =>Product::find($id),
+            'categories'        =>Category::where('status', 1)->get(),
+            'productOtherImages'=>ProductOtherImage::find($id),
+
         ]);
     }
 

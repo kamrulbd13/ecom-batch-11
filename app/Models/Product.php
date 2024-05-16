@@ -27,8 +27,9 @@ class Product extends Model
         self::$product->price           = $request->price;
         self::$product->qty             = $request->qty;
         self::$product->description     = $request->description;
-       self::$product->save();
-        return redirect()->route('product.index')->with('message','Product added Successfully');
+        self::$product->save();
+
+       return self::$product->id;
     }
 
     public static function getImageUrl($request){
@@ -57,5 +58,10 @@ class Product extends Model
 //    many to one with Product and Category
     public function category(){
        return $this->belongsTo(Category::class);
+    }
+
+//    one to many with product and other image
+    public function productOtherImages(){
+        return $this->hasMany(ProductOtherImage::class);
     }
 }

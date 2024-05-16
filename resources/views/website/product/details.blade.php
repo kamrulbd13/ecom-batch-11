@@ -32,11 +32,10 @@
                                     <img src="{{asset($product->image)}}" id="current" alt="#">
                                 </div>
                                 <div class="images">
-                                    <img src="{{asset('/')}}website/assets/images/product-details/01.jpg" class="img" alt="#">
-                                    <img src="{{asset('/')}}website/assets/images/product-details/02.jpg" class="img" alt="#">
-                                    <img src="{{asset('/')}}website/assets/images/product-details/03.jpg" class="img" alt="#">
-                                    <img src="{{asset('/')}}website/assets/images/product-details/04.jpg" class="img" alt="#">
-                                    <img src="{{asset('/')}}website/assets/images/product-details/05.jpg" class="img" alt="#">
+                                    @foreach($product->productOtherImages as $productOtherImage)
+                                        <img src="{{asset($productOtherImage->image)}}" class="img" alt="#">
+                                    @endforeach
+
                                 </div>
                             </main>
                         </div>
@@ -85,13 +84,9 @@
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="form-group quantity">
                                         <label for="color">Quantity</label>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
+                                        <input type="number" value="1" min="1" class="form-control" name="qty">
+                                        <span for="color" >In Store ( {{$product->qty}} )</span>
+
                                     </div>
                                 </div>
                             </div>
